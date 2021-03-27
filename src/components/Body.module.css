@@ -1,0 +1,9 @@
+.table {
+  box-shadow: 0 0 60px #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+  padding: 10px;
+  justify-content: center;
+}

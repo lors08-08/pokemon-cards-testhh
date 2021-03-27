@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCards } from "./redux/actions";
+import Loader from "./components/Loader";
+import Body from "./components/Body";
 
 function App() {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading);
+  const error = useSelector((state) => state.error);
+
+  useEffect(() => {
+    dispatch(loadCards());
+  }, [dispatch]);
+
+  if (loading || error) {
+    return <Loader />;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Body />
     </div>
   );
 }
