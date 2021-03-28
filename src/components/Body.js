@@ -23,13 +23,9 @@ function Body() {
     history.push("/");
   };
 
-  const n = 15;
-  const shuffled = cards.sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, n);
-
   return (
     <div className={styles.table}>
-      {selected.map((card) => {
+      {cards.map((card) => {
         return (
           <CardInfo
             open={open}

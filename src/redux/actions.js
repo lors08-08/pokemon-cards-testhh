@@ -4,9 +4,12 @@ export function loadCards() {
     fetch("https://api.pokemontcg.io/v1/cards")
       .then((response) => response.json())
       .then((json) => {
+        const n = 15;
+        const shuffled = json.cards.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, n);
         dispatch({
           type: "cards/load/succeed",
-          payload: json.cards,
+          payload: selected,
         });
       })
       .catch(() => {
